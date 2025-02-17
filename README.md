@@ -1,4 +1,4 @@
-# 2025-ITELEC2-LAB012
+# 2025-ITELEC2-LAB015
 Week 04 - Looping Statements
 
 Laboratory # 15 - Guided Coding Exercise: while Loop for User Input with a Sentinel Value
