@@ -1,2 +1,2 @@
-Enter a day of the week: Today is Tuesday.
-It's a Weekday!
+Enter a number (or 'stop' to finish): Invalid input. Please enter a numeric value or 'stop'. 
+The total sum is: 0

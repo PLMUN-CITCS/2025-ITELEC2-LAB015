@@ -1,2 +1,1 @@
-Enter a day of the week: Today is Monday.
-It's a Weekday!
+Enter a number (or 'stop' to finish): Enter a number (or 'stop' to finish): Enter a number (or 'stop' to finish): Enter a number (or 'stop' to finish): The total sum is: 18.0

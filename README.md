@@ -95,18 +95,17 @@ Only perform this if this is the first time you will setup your Git Environment
    ```
       
    **Notable Observations (to be discussed after completing the exercise):**
-   - Python does not have a built-in switch statement like some other languages. Dictionaries provide a clean and efficient way to achieve similar functionality.
-   - The .get() method of a dictionary allows you to retrieve a value associated with a key. Crucially, it also lets you specify a default value that will be returned if the key is not found in the dictionary. This is very useful for handling cases where the user might enter invalid input.
-   - The ternary operator (value_if_true if condition else value_if_false) provides a concise way to write conditional expressions in a single line. It's useful for simple conditions where you want to assign one of two values.
-   - String methods like .strip() and .lower() are essential for normalizing user input, making your code more robust.
+   - The while True loop continues indefinitely until the break statement is encountered.
+   - The try-except block is essential for handling potential errors when converting the user's input to a number. This makes the program more robust.
+   - The use of .strip().lower() ensures that the program correctly recognizes the sentinel value ("stop") regardless of the user's capitalization or spacing.
 
    **Python Best Practices**
-   - Input Normalization: Always normalize user input (e.g., convert to lowercase using .lower() and remove leading/trailing whitespace using .strip()) to handle variations in user input and prevent unexpected behavior.
-   - Dictionary .get() with Default: Use the .get() method with a default value when retrieving values from a dictionary. This is a best practice, especially when dealing with user input, as it provides a clean way to handle cases where the key might not exist.
-   - Readability: Even with concise constructs like the ternary operator, prioritize code readability. If a ternary expression becomes too complex, consider using a regular if...else statement for clarity.
-   - Descriptive Variable Names: Use meaningful variable names (e.g., day_messages, day, message, day_type).
-   - Comments: Add comments to explain your logic, especially when simulating control flow structures like a switch statement.
-   - Test Thoroughly: Test your code with various inputs, including valid days of the week (with different capitalization and spacing) and invalid days, to ensure it handles all cases correctly.
+   - Error Handling: Use try-except blocks to gracefully handle potential errors, especially when dealing with user input, which can be unpredictable.
+   - Input Normalization: Normalize user input (convert to lowercase, strip whitespace) to make your program more robust and user-friendly.
+   - Clear Loop Structure: Maintain a clear and concise loop structure to enhance readability and make your code easier to understand and maintain.
+   - Descriptive Variable Names: Use meaningful variable names (e.g., total_sum, user_input).
+   - Comments: Add comments to explain the logic of your code, especially the purpose of the while loop, the sentinel value, and the error handling.
+   - Test Thoroughly: Test your code with different inputs, including valid numbers, the sentinel value ("stop"), and invalid (non-numeric) input to ensure it works correctly in all cases.
 
    **Step-by-Step Instructions:**
 
@@ -153,6 +152,7 @@ while True:
         total_sum += number
     except ValueError:
         print("Invalid input. Please enter a numeric value or 'stop'.")
+        break  # Exit the loop
 ```
 
    7. Print the final total sum:
