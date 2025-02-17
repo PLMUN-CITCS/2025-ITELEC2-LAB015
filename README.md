@@ -1,7 +1,7 @@
 # 2025-ITELEC2-LAB012
-Week 04 - Conditional Statements
+Week 04 - Looping Statements
 
-Laboratory # 12 - Guided Coding Exercise: Simulating a Switch Statement and Ternary Operator in Python
+Laboratory # 15 - Guided Coding Exercise: while Loop for User Input with a Sentinel Value
 
 ## **Instructions**
 
@@ -77,37 +77,21 @@ Only perform this if this is the first time you will setup your Git Environment
 
 ### **Step 3: Complete the Assignment**
 
-**Laboratory # 12 - Guided Coding Exercise: Simulating a Switch Statement and Ternary Operator in Python**
+**Laboratory # 15 - Guided Coding Exercise: while Loop for User Input with a Sentinel Value**
 
    **Objective:**
-   - Understand how to simulate a switch statement in Python using a dictionary.
-   - Learn how to use the ternary operator for inline conditional expressions.
-   - Practice dictionary lookups and handling default values.
-   - Reinforce input handling and string manipulation.
+   - Understand the use of a while loop for repetitive tasks.
+   - Learn how to terminate a loop using a sentinel value.
+   - Recognize the advantages of looping for dynamic, user-driven processes.
+   - Practice input validation and error handling.
 
    **Desired Output (Example 1):**
    ```bash
-   Enter a day of the week: Monday
-   Today is Monday.
-   It's a Weekday!
-   ```
-   **Desired Output (Example 2):**
-   ```bash
-   Enter a day of the week: saturday
-   Today is Saturday.
-   It's a Weekend!
-   ```
-   **Desired Output (Example 3):**
-   ```bash
-   Enter a day of the week:  tuesday 
-   Today is Tuesday.
-   It's a Weekday!
-   ```
-   **Desired Output (Example 4):**
-   ```bash
-   Enter a day of the week:  Funday
-   Invalid day entered.
-   It's a Weekday!
+   Enter a number (or 'stop' to finish): 5
+   Enter a number (or 'stop' to finish): 10
+   Enter a number (or 'stop' to finish): 3
+   Enter a number (or 'stop' to finish): stop
+   The total sum is: 18
    ```
       
    **Notable Observations (to be discussed after completing the exercise):**
@@ -127,60 +111,61 @@ Only perform this if this is the first time you will setup your Git Environment
    **Step-by-Step Instructions:**
 
    1. Setting up: Open your preferred Python environment or Text Editor, and create a Python Script.
-      - Required Filename: `switch_ternary_operator.py`
+      - Required Filename: `while_loop_sentinel.py`
       
-   2.  Create a dictionary to simulate a switch statement:
-      - Create a dictionary named day_messages. The keys of the dictionary should be the days of the week (in lowercase). The values should be the corresponding messages (e.g., "Today is Monday.", "Today is Tuesday.", etc.).
+   2. Initialize the sum variable:
+      - Create a variable named total_sum and initialize it to 0. This variable will store the sum of the numbers entered by the user.
 ```python
-day_messages = {
-    "monday": "Today is Monday.",
-    "tuesday": "Today is Tuesday.",
-    "wednesday": "Today is Wednesday.",
-    "thursday": "Today is Thursday.",
-    "friday": "Today is Friday.",
-    "saturday": "Today is Saturday.",
-    "sunday": "Today is Sunday."
-}
+total_sum = 0
 ```
       
-   3.  Get input from the user and normalize it:
-      - Use the input() function to prompt the user to enter a day of the week.
-      - Use .strip() to remove any leading or trailing whitespace from the user's input.
-      - Use .lower() to convert the input to lowercase. This makes the comparison case-insensitive.
-      - Store the normalized input in a variable named day.
+   3.  Start a while loop that continues indefinitely:
+      - Use a while True loop. This creates a loop that will run continuously until explicitly stopped using the break statement.
 ```python
-day = input("Enter a day of the week: ").strip().lower()
+while True:
 ```
 
-   4. Retrieve the message using the dictionary with a default:
-      - Use the .get() method of the day_messages dictionary to retrieve the message associated with the day entered by the user.
-      - Provide a default value to the .get() method. This default value will be returned if the day is not found as a key in the dictionary. Use something like "Invalid day entered." as the default.
-      - Store the returned message in a variable named message.
+   4. Prompt the user for input:
+      - Inside the while loop, use the input() function to prompt the user to enter a number or "stop" to finish. Store the input in a variable named user_input.
 ```python
-message = day_messages.get(day, "Invalid day entered.")
+    user_input = input("Enter a number (or 'stop' to finish): ")
 ```
 
-   5. Use the ternary operator to determine weekend vs. weekday:
-      - Use the ternary operator to determine if the day is a weekend (Saturday or Sunday) or a weekday.
-      - The condition should check if day is present in the tuple ("saturday", "sunday").
-      - If the condition is true, assign the string "Weekend" to the variable day_type. Otherwise, assign "Weekday".
+   5. Check if the sentinel value 'stop' is entered:
+      - Convert the user_input to lowercase using .lower() and remove any leading/trailing whitespace using .strip(). - This handles variations in user input (e.g., "Stop", " STOP ", "stop").
+      - Use an if statement to check if the normalized user_input is equal to "stop".
+      - If it is, use the break statement to exit the while loop.
 ```python
-day_type = "Weekend" if day in ("saturday", "sunday") else "Weekday"
+    if user_input.strip().lower() == "stop":
+        break  # Exit the loop
 ```
 
-   6. Use the ternary operator to determine weekend vs. weekday:
-      - Use the print() function to display the message (from the dictionary lookup) and the day_type (determined by the ternary operator).
+   6. Convert input to a number and add to total_sum (with error handling):
+      - After the if statement that checks for "stop", use a try-except block to handle potential ValueError exceptions that might occur if the user enters something that is not a number.
+      - Inside the try block:
+         - Convert the user_input to a float (to allow for decimal numbers).
+         - Add the converted number to total_sum using the += operator.
+      - Inside the except ValueError block:
+         - Print an error message to the user indicating that the input was invalid.
 ```python
-print(message)
-print("It's a", day_type + "!")
+    try:
+        number = float(user_input)
+        total_sum += number
+    except ValueError:
+        print("Invalid input. Please enter a numeric value or 'stop'.")
 ```
 
-   7. Complete Code: Combine the steps above to form the complete program.
-   8. Run the code: Execute your Python code.
-   9. Observe the output: Test the program with different days of the week (including variations in capitalization and spacing) and invalid day names.
+   7. Print the final total sum:
+      - After the while loop has finished (outside the loop), use the print() function to display the final value of total_sum.
+```python
+print("The total sum is:", total_sum)
+```
+   8. Complete Code: Combine the steps above to form the complete program.
+   9. Run the code: Execute your Python code.
+   10. Observe the output: Test the program by entering various numbers and then entering "stop" (in different cases and with extra spaces).  Also, test it by entering non-numeric input to see how the error handling works.
 
    **Conclusion**
-   This exercise demonstrated two important Python techniques: simulating a switch statement using dictionaries and using the ternary operator for concise conditional expressions. You learned how to use dictionary lookups with default values and how to normalize user input for more robust code.  These techniques are valuable tools for writing cleaner, more efficient, and easier-to-read Python code.
+   This exercise demonstrated the use of a while loop for handling user input with a sentinel value.  You learned how to create a loop that continues until a specific condition is met (in this case, the user entering "stop").  You also practiced input validation and error handling using try-except blocks.  The while loop and sentinel values are very useful for creating interactive programs where the number of iterations depends on user input.  Robust error handling is crucial for creating reliable and user-friendly programs.
 
 ### **Step 4: Push Changes to GitHub**
 Once you've completed your changes, follow these steps to upload your work to your GitHub repository.
@@ -204,7 +189,7 @@ git add .
    Write a meaningful commit message:
    
 ```bash
-git commit -m "Submitting Python Week 04 - Laboratory # 12"
+git commit -m "Submitting Python Week 04 - Laboratory # 15"
 ```
    
 4. Push your changes to GitHub:
